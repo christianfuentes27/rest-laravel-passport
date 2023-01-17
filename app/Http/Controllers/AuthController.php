@@ -60,6 +60,8 @@ class AuthController extends Controller
         $currentTime = Carbon::now()->format('H:i:s');
         $interpolateTime = (Carbon::parse($currentTime)->diffInSeconds(Carbon::parse($sunrise))) 
                             / (Carbon::parse($sunset)->diffInSeconds(Carbon::parse($sunrise)));
+        $interpolateTime = ((pi()/2 + pi()/2)*(Carbon::parse($currentTime)->diffInSeconds(Carbon::parse($sunrise))))
+                            / (Carbon::parse($sunset)->diffInSeconds(Carbon::parse($sunrise))) - pi()/2;
         $cos = cos($interpolateTime);
         $sin = sin($interpolateTime);
         return response()->json([
