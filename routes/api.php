@@ -17,7 +17,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('login', [AuthController::class, 'login']);
 Route::get('logout', [AuthController::class, 'logout']);
-// Route::get('getdata', [AuthController::class, 'getdata']);
 Route::get('interpolate', [AuthController::class, 'interpolate']);
-
 // https://sunrise-sunset.org/api

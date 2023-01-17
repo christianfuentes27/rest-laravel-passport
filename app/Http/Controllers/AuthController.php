@@ -58,8 +58,6 @@ class AuthController extends Controller
         $sunrise = Carbon::parse($suntime['sunrise'])->format('H:i:s');
         $sunset = Carbon::parse($suntime['sunset'])->format('H:i:s');
         $currentTime = Carbon::now()->format('H:i:s');
-        $interpolateTime = (Carbon::parse($currentTime)->diffInSeconds(Carbon::parse($sunrise))) 
-                            / (Carbon::parse($sunset)->diffInSeconds(Carbon::parse($sunrise)));
         $interpolateTime = ((pi()/2 + pi()/2)*(Carbon::parse($currentTime)->diffInSeconds(Carbon::parse($sunrise))))
                             / (Carbon::parse($sunset)->diffInSeconds(Carbon::parse($sunrise))) - pi()/2;
         $cos = cos($interpolateTime);
@@ -76,9 +74,5 @@ class AuthController extends Controller
             'sensor3' => rand(0, 100) / 100,
             'sensor4' => rand(0, 100) / 100
         ]);
-    }
-    
-    function draw() {
-        return view('draw', ['message' => 'hola']);
     }
 }
